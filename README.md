@@ -1,6 +1,6 @@
-# Covalent QuickStart
+# Unidos en Salud
 
-Quickstart App with @covalent packages
+Red interpersonal App with @angular @materialdesign @covalent 
 
 ## Setup
 
