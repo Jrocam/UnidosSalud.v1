@@ -1,0 +1,14 @@
+.background{
+  /* Set a specific height */
+  height: 30%;
+  position: fixed;
+  top: 0;
+  /* Create the parallax scrolling effect */
+  background: url("../../assets/img/salud01.jpg") no-repeat fixed center;
+  background-size: cover;
+}
+@media only screen and (max-device-width: 1024px) {
+  .background {
+    background-attachment: scroll;
+  }
+}

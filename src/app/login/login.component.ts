@@ -1,0 +1,55 @@
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { TdLoadingService } from '@covalent/core';
+import { AuthenticationService } from '../services/authentication.service';
+
+@Component({
+  selector: 'qs-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss'],
+})
+export class LoginComponent implements OnInit{
+
+  username: string;
+  password: string;
+  model: any = {};
+  loading = false;
+  error = '';
+  constructor(private _router: Router,
+              private authenticationService: AuthenticationService,
+              private _loadingService: TdLoadingService) {}
+  login() {
+    this.loading = true;
+    this._loadingService.register();
+    setTimeout(() => {
+      this._loadingService.resolve();
+    }, 2000);
+    this.authenticationService.login(this.username, this.password)
+      .subscribe(result => {
+        if (result === true) {
+          // login successful
+          //alert('Inició sesión como: ' + result);
+          //alert('Inició sesión como: ' + this.username);
+          this._router.navigate(['/']);
+        } else {
+          // login failed
+          this.error = 'Username or password is incorrect';
+          this.loading = false;
+          alert('whatface'+this.error);
+        }
+      });
+  }
+  ngOnInit() {
+    // reset login status
+    this.authenticationService.logout();
+  }
+  // login(): void {
+  //   this._loadingService.register();
+  //   alert('Inició sesión como: ' + this.username);
+  //   setTimeout(() => {
+  //     this._router.navigate(['/']);
+  //     this._loadingService.resolve();
+  //   }, 2000);
+  // }
+}

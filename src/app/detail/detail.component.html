@@ -1,0 +1,47 @@
+<td-layout-nav>
+  <div td-toolbar-content layout="row" layout-align="center center" flex>
+    <span *ngIf="user">Usuarios > {{user.displayName}}</span>
+    <span flex></span>
+  </div>
+  <td-layout-card-over  *ngIf="!vacio">
+    <md-card-title> Perfil de {{user.displayName}}</md-card-title>
+    <md-card-subtitle> {{user.area}} </md-card-subtitle>
+    <md-divider></md-divider>
+    <md-list>
+      <md-list-item layout-align="row">
+          <md-icon md-list-avatar>email</md-icon>
+          <h3 md-line> {{user.email}} </h3>
+          <p md-line> Correo de contacto. </p>
+      </md-list-item>
+      <md-list-item layout-align="row">
+        <md-icon md-list-avatar>account_balance</md-icon>
+        <h3 md-line> {{user.institution}} </h3>
+        <p md-line> Institución en la que laboro. </p>
+      </md-list-item>
+      <md-list-item layout-align="row">
+        <md-icon md-list-avatar>star</md-icon>
+        <h3 md-line> {{user.area}} </h3>
+        <p md-line> Area de trabajo. </p>
+      </md-list-item>
+      <md-list-item layout-align="row">
+        <md-icon md-list-avatar>sentiment_very_satisfied</md-icon>
+        <h3 md-line> {{user.topicos}} </h3>
+        <p md-line> Tópicos de interés. </p>
+      </md-list-item>
+    </md-list>
+    <md-divider></md-divider>
+    <md-card-actions layout="row">
+      <div layout="row">
+        <div flex-gt-xs>
+          <button md-button color="accent" class="text-upper" (click)="goBack()">
+            Atras
+          </button>
+        </div>
+        <div layout="row" flex-offset-gt-xs>
+          <button md-raised-button mdTooltip="Contactar mensaje" class="margen"><md-icon color="primary">drafts</md-icon></button>
+          <button md-raised-button mdTooltip="Contactar externo" class="margen"><md-icon color="primary">send</md-icon></button>
+        </div>
+      </div>
+    </md-card-actions>
+  </td-layout-card-over>
+</td-layout-nav>

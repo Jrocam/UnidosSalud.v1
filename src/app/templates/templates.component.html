@@ -1,0 +1,231 @@
+
+<td-layout-nav class="white-orange">
+  <div td-toolbar-content layout="row" layout-align="start center" flex>
+    <!--<img src="../../assets/icons/logoColor.svg" class="wat">-->
+
+    <span hide-xs>GENERACIÓN VIDA NUEVA</span>
+    <span flex ></span>
+    <a md-icon-button mdTooltip="Interactúa" [routerLink]="['/interacciones']" ><md-icon>supervisor_account</md-icon></a>
+    <a md-icon-button mdTooltip="Correos" [routerLink]="['/templates/email']">
+      <td-notification-count color="accent" [notifications]="4">
+        <md-icon>email</md-icon>
+      </td-notification-count>
+    </a>
+    <a md-icon-button mdTooltip="Perfil" [routerLink]="['/perfil']" ><md-icon>account_box</md-icon></a>
+  </div>
+  <md-toolbar color="primary" class="pad-none pull-top">
+    <nav md-tab-nav-bar class="pull-bottom">
+      <a md-tab-link
+        [routerLink]="['/templates']"
+        class="active">
+        Inicio
+      </a>
+      <a md-tab-link
+        [routerLink]="['/interacciones']">
+        Interacciones
+      </a>
+      <a md-tab-link
+        [routerLink]="['/templates/email']">
+        Comunicación
+      </a>
+      <a md-tab-link
+         [routerLink]="['']">
+        About us
+      </a>
+    </nav>
+  </md-toolbar>
+  <section class="bgc-blue-50">
+    <div layout-gt-xs="row">
+      <div flex class="pad" tdMediaToggle="gt-xs" [mediaClasses]="['pad-xl']">
+        <div class="push-top-xl" hide-xs></div>
+        <div tdMediaToggle="gt-sm" [mediaClasses]="['push-lg']">
+          <h1 class="md-display-1 tc-grey-800 push-top-xs push-bottom-sm">Unidos en Salud</h1>
+          <p class="md-title tc-grey-700">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aspernatur deleniti dicta dolores facere fuga nihil recusandae sint. Aspernatur, ipsa laboriosam minus nostrum pariatur porro quia quis ratione sint voluptas.</p>
+            <button md-raised-button color="accent" [routerLink]="['/interacciones']" class="push-bottom md-button-lg">Empieza ya!</button>
+        </div>
+        <div class="push-bottom-xl" hide-xs></div>
+      </div>
+      <div flex="55" class="bg-cover" >
+      </div>
+    </div>
+  </section>
+
+  <section class="bgc-light-blue-600 tc-light-blue-50"  tdMediaToggle="gt-xs" [mediaClasses]="['pad-top-xl', 'pad-bottom-xl']">
+    <h2 class="md-headline text-upper text-center tc-grey-50 push-bottom">Te ofrecemos</h2>
+    <div layout="row" layout-align-gt-xs="center center">
+      <div flex-gt-xs="80" layout="row" layout-wrap>
+        <div class="text-center" flex-xs="50" flex-gt-xs="25">
+          <md-icon class="tc-grey-50 md-display-2">system_update_alt</md-icon>
+          <div class="pad-bottom-md">Página informativa</div>
+        </div>
+        <div class="text-center" flex-xs="50" flex-gt-xs="25">
+          <md-icon class="tc-grey-50 md-display-2 ">dashboard</md-icon>
+          <div class="pad-bottom-md">Interacciones</div>
+        </div>
+        <div class="text-center" flex-xs="50" flex-gt-xs="25">
+          <md-icon class="tc-grey-50 md-display-2">email</md-icon>
+          <div class="pad-bottom-md">Aplicación Email</div>
+        </div>
+        <div class="text-center" flex-xs="50" flex-gt-xs="25">
+          <md-icon class="tc-grey-50 md-display-2">trending_up</md-icon>
+          <div class="pad-bottom-md">Análisis por Nodos</div>
+        </div>
+      </div>
+    </div>
+  </section>
+<!--Product Card code starts here-->
+  <section class="bgc-blue-grey-50" tdMediaToggle="gt-xs" [mediaClasses]="['pad-top-xl', 'pad-bottom-xl']">
+    <div  layout-gt-xs="row" layout-align-gt-xs="center center">
+      <div layout-gt-sm="row" flex-gt-xs="75" layout-margin>
+        <div flex-gt-xs="25">
+          <md-card>
+            <md-toolbar color="accent" class="bgc-light-blue-500 push-bottom">
+              <span class="text-upper">Plan Name</span>
+            </md-toolbar>
+            <md-card-subtitle>Plan description goes here.</md-card-subtitle>
+            <md-divider></md-divider>
+            <md-list>
+              <h3 md-subheader>Features</h3>
+              <md-list-item>
+                  <md-icon md-list-icon class="fill-grey-700">description</md-icon>
+                  <h4 md-line>Feature Name</h4>
+              </md-list-item>
+              <md-divider md-inset></md-divider>
+              <md-list-item>
+                  <md-icon md-list-icon class="fill-grey-700">description</md-icon>
+                  <h4 md-line>Feature Name</h4>
+              </md-list-item>
+              <md-divider md-inset></md-divider>
+              <md-list-item>
+                  <md-icon md-list-icon class="fill-grey-700">description</md-icon>
+                  <h4 md-line>Feature Name</h4>
+              </md-list-item>
+              <md-divider md-inset></md-divider>
+              <md-list-item>
+                  <md-icon md-list-icon class="fill-grey-700">description</md-icon>
+                  <h4 md-line>Feature Name</h4>
+              </md-list-item>
+            </md-list>
+          </md-card>
+        </div>
+
+        <div flex-gt-xs="25">
+          <md-card>
+            <md-toolbar color="accent" class="bgc-light-blue-800 push-bottom">
+              <span class="text-upper">Plan Name</span>
+            </md-toolbar>
+            <md-card-subtitle>Plan description goes here.</md-card-subtitle>
+            <md-divider></md-divider>
+            <md-list>
+              <h3 md-subheader>Features</h3>
+              <md-list-item>
+                  <md-icon md-list-icon class="fill-grey-700">description</md-icon>
+                  <h4 md-line>Feature Name</h4>
+              </md-list-item>
+              <md-divider md-inset></md-divider>
+              <md-list-item>
+                  <md-icon md-list-icon class="fill-grey-700">description</md-icon>
+                  <h4 md-line>Feature Name</h4>
+              </md-list-item>
+              <md-divider md-inset></md-divider>
+              <md-list-item>
+                  <md-icon md-list-icon class="fill-grey-700">description</md-icon>
+                  <h4 md-line>Feature Name</h4>
+              </md-list-item>
+              <md-divider md-inset></md-divider>
+              <md-list-item>
+                  <md-icon md-list-icon class="fill-grey-700">description</md-icon>
+                  <h4 md-line>Feature Name</h4>
+              </md-list-item>
+            </md-list>
+          </md-card>
+        </div>
+
+        <div flex-gt-xs="25">
+          <md-card>
+            <md-toolbar color="accent" class="bgc-orange-700 push-bottom">
+              <span class="text-upper">Plan Name</span>
+            </md-toolbar>
+            <md-card-subtitle>Plan description goes here.</md-card-subtitle>
+            <md-divider></md-divider>
+            <md-list>
+              <h3 md-subheader>Features</h3>
+              <md-list-item>
+                  <md-icon md-list-icon class="fill-grey-700">description</md-icon>
+                  <h4 md-line>Feature Name</h4>
+              </md-list-item>
+              <md-divider md-inset></md-divider>
+              <md-list-item>
+                  <md-icon md-list-icon class="fill-grey-700">description</md-icon>
+                  <h4 md-line>Feature Name</h4>
+              </md-list-item>
+              <md-divider md-inset></md-divider>
+              <md-list-item>
+                  <md-icon md-list-icon class="fill-grey-700">description</md-icon>
+                  <h4 md-line>Feature Name</h4>
+              </md-list-item>
+              <md-divider md-inset></md-divider>
+              <md-list-item>
+                  <md-icon md-list-icon class="fill-grey-700">description</md-icon>
+                  <h4 md-line>Feature Name</h4>
+              </md-list-item>
+            </md-list>
+          </md-card>
+        </div>
+        <div flex-gt-xs="25">
+          <md-card>
+            <md-toolbar color="accent" class="bgc-deep-orange-700 push-bottom">
+              <span class="text-upper">Plan Name</span>
+            </md-toolbar>
+            <md-card-subtitle>Plan description goes here.</md-card-subtitle>
+            <md-divider></md-divider>
+            <md-list>
+              <h3 md-subheader>Features</h3>
+              <md-list-item>
+                  <md-icon md-list-icon class="fill-grey-700">description</md-icon>
+                  <h4 md-line>Feature Name</h4>
+              </md-list-item>
+              <md-divider md-inset></md-divider>
+              <md-list-item>
+                  <md-icon md-list-icon class="fill-grey-700">description</md-icon>
+                  <h4 md-line>Feature Name</h4>
+              </md-list-item>
+              <md-divider md-inset></md-divider>
+              <md-list-item>
+                  <md-icon md-list-icon class="fill-grey-700">description</md-icon>
+                  <h4 md-line>Feature Name</h4>
+              </md-list-item>
+              <md-divider md-inset></md-divider>
+              <md-list-item>
+                  <md-icon md-list-icon class="fill-grey-700">description</md-icon>
+                  <h4 md-line>Feature Name</h4>
+              </md-list-item>
+            </md-list>
+          </md-card>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="bgc-blue-600">
+    <div layout-gt-xs="row">
+      <div flex class="bg-cover">
+      </div>
+      <div flex class="pad" tdMediaToggle="gt-xs" [mediaClasses]="['pad-xxl']">
+        <div class="push-top-xxl" hide-xs></div>
+        <h3 class="md-display-1 tc-white push-top-xs push-bottom-sm">Contacta con nosotros</h3>
+        <p class="md-title tc-blue-50">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi eos laboriosam nesciunt quia recusandae reprehenderit sed!</p>
+        <button md-raised-button color="accent" class="push-bottom">Contacta-nos</button>
+        <div class="push-top-xxl" hide-xs></div>
+      </div>
+    </div>
+  </section>
+  <section class="bgc-blue-grey-800 tc-blue-grey-100">
+    <div layout-gt-xs="row" layout-align-gt-xs="center center">
+      <div layout-gt-sm="row" flex-gt-xs="75" layout-margin layout-padding>
+        <md-icon push-right-xl svgIcon="assets:logo" class="md-icon-logo"></md-icon>
+
+        <p class="text-sm" flex>&copy; Copyright 2017 UnderpreassureApps, Inc. All rights reserved.</p>
+      </div>
+    </div>
+  </section>
+</td-layout-nav>

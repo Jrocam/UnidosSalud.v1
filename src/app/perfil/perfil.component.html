@@ -1,0 +1,54 @@
+<td-layout-nav>
+  <div td-toolbar-content layout="row" layout-align="center center" flex>
+    <span>Mi Perfil</span>
+    <span flex></span>
+    <a md-icon-button mdTooltip="Interactúa" [routerLink]="['/interacciones']" ><md-icon>supervisor_account</md-icon></a>
+    <a md-icon-button mdTooltip="Correos" [routerLink]="['/templates/email']">
+      <td-notification-count color="accent" [notifications]="4">
+        <md-icon>email</md-icon>
+      </td-notification-count>
+    </a>
+    <a md-icon-button mdTooltip="Inicio" [routerLink]="['/templates']"><md-icon>home</md-icon></a>
+  </div>
+  <td-layout-card-over>
+    <md-card-title> Perfil de {{user}}</md-card-title>
+    <md-card-subtitle> {{user}} </md-card-subtitle>
+    <md-divider></md-divider>
+    <md-list>
+      <md-list-item layout-align="row">
+        <md-icon md-list-avatar>email</md-icon>
+        <h3 md-line> {{user}} </h3>
+        <p md-line> Correo de contacto. </p>
+      </md-list-item>
+      <md-list-item layout-align="row">
+        <md-icon md-list-avatar>account_balance</md-icon>
+        <h3 md-line> {{user}} </h3>
+        <p md-line> Institución en la que laboro. </p>
+      </md-list-item>
+      <md-list-item layout-align="row">
+        <md-icon md-list-avatar>star</md-icon>
+        <h3 md-line> {{user}} </h3>
+        <p md-line> Area de trabajo. </p>
+      </md-list-item>
+      <md-list-item layout-align="row">
+        <md-icon md-list-avatar>sentiment_very_satisfied</md-icon>
+        <h3 md-line> {{user}} </h3>
+        <p md-line> Tópicos de interés. </p>
+      </md-list-item>
+    </md-list>
+    <md-divider></md-divider>
+    <md-card-actions layout="row">
+      <div layout="row">
+        <div flex-gt-xs>
+          <button md-button color="accent" class="text-upper" (click)="goBack()">
+            Atras
+          </button>
+        </div>
+        <div layout="row" flex-offset-gt-xs>
+          <button md-raised-button mdTooltip="Contactar mensaje" class="margen"><md-icon color="primary">drafts</md-icon></button>
+          <button md-raised-button mdTooltip="Contactar externo" class="margen"><md-icon color="primary">send</md-icon></button>
+        </div>
+      </div>
+    </md-card-actions>
+  </td-layout-card-over>
+</td-layout-nav>
