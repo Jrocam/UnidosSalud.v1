@@ -45,7 +45,7 @@ const routes: Routes = [
       {path: ':id/delete', component: UsersFormComponent},
       {path: ':id/edit', component: UsersFormComponent},
     ]},
-    {path: 'templates', children: [
+    {path: 'home', children: [
       {path: '', component: TemplatesComponent},
       {path: 'dashboard', component: DashboardTemplateComponent},
       {path: 'email', component: EmailTemplateComponent},

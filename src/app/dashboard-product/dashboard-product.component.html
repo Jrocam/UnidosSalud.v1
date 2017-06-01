@@ -2,13 +2,13 @@
   <div td-toolbar-content layout="row" layout-align="center center" flex>
     <span>Interacciones</span>
     <span flex></span>
-    <a md-icon-button mdTooltip="Correos" [routerLink]="['/templates/email']">
+    <a md-icon-button mdTooltip="Correos" [routerLink]="['/home/email']">
       <td-notification-count color="accent" [notifications]="4">
         <md-icon>email</md-icon>
       </td-notification-count>
     </a>
     <a md-icon-button mdTooltip="Perfil" [routerLink]="['/perfil']" ><md-icon>account_box</md-icon></a>
-    <a md-icon-button mdTooltip="Inicio" [routerLink]="['/templates']"><md-icon>home</md-icon></a>
+    <a md-icon-button mdTooltip="Inicio" [routerLink]="['/']"><md-icon>home</md-icon></a>
   </div>
   <td-layout-manage-list #manageList
                         [opened]="media.registerQuery('gt-sm') | async"
@@ -72,16 +72,12 @@
         <md-icon md-list-icon>star</md-icon>
         No gubernamentales
       </a>
-      <a md-list-item (click)="!media.query('gt-sm') && manageList.close()" md-ripple class="block relative">
-        <md-icon md-list-icon>people</md-icon>
-        Customers
-      </a>
-      <h3 md-subheader>Admin Menu</h3>
-      <a md-list-item (click)="!media.query('gt-sm') && manageList.close()" md-ripple class="block relative">
+      <h3 *ngIf="mostrarAdmin" md-subheader>Admin Menu</h3>
+      <a *ngIf="mostrarAdmin" md-list-item md-ripple href="http://salud-web.herokuapp.com/admin/" class="block relative">
         <md-icon md-list-icon>receipt</md-icon>
         Log
       </a>
-      <a md-list-item (click)="!media.query('gt-sm') && manageList.close()" md-ripple class="block relative">
+      <a *ngIf="mostrarAdmin" md-list-item md-ripple href="http://salud-web.herokuapp.com/admin/" class="block relative">
         <md-icon md-list-icon>settings</md-icon>
         Settings
       </a>

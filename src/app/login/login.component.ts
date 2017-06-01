@@ -27,9 +27,6 @@ export class LoginComponent implements OnInit{
     this.authenticationService.login(this.username, this.password)
       .subscribe(result => {
         if (result === true) {
-          // login successful
-          //alert('Inició sesión como: ' + result);
-          //alert('Inició sesión como: ' + this.username);
           this._router.navigate(['/']);
         } else {
           // login failed
@@ -43,12 +40,4 @@ export class LoginComponent implements OnInit{
     // reset login status
     this.authenticationService.logout();
   }
-  // login(): void {
-  //   this._loadingService.register();
-  //   alert('Inició sesión como: ' + this.username);
-  //   setTimeout(() => {
-  //     this._router.navigate(['/']);
-  //     this._loadingService.resolve();
-  //   }, 2000);
-  // }
 }

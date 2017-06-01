@@ -21,7 +21,7 @@ export class ProductOverviewComponent implements AfterViewInit {
   selectItem: string = '';
   vacio: boolean = false;
   vacioP: boolean = false;
-
+  userEmail:string;
   constructor(private _titleService: Title,
               private _itemsService: ItemsService,
               private _usersService: UsersService,
@@ -67,9 +67,12 @@ export class ProductOverviewComponent implements AfterViewInit {
     this.vacioP = this.filterUsers.length === 0;
   }
   ngAfterViewInit(): void {
-
+    //get userEmail from localStorage
+    let local = localStorage.getItem('currentUser');
+    let ar = local.split('"',4);
+    let email = ar[3];
+    this.userEmail = email;
     this.getRecursos();
-
     this._titleService.setTitle( 'UES Interacciones ' );
     this._loadingService.register('items.load');
     this._itemsService.query().subscribe((items: Object[]) => {

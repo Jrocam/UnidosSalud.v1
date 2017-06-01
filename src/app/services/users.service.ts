@@ -65,4 +65,25 @@ export class UsersService extends RESTService<IUser> {
       }
     });
   }
+  interaction(usual: string){
+    let body = JSON.stringify({ receiver:usual});
+    let headers = new Headers();
+    let local = localStorage.getItem('currentUser');
+    let ar = local.split('"',8);
+    let llave = ar[7];
+    headers.append('Content-Type', 'application/json');
+    headers.append( 'Authorization', 'Token '+ llave);
+    return this.http.put('http://salud-web.herokuapp.com/api/interact', body,{headers:headers}).map((response: Response) => {
+      // login successful if there's a jwt token in the response
+      if (response) {
+        console.log(response);
+        console.log("se sumó una interacción al usuario.");
+        return true;
+      } else {
+        console.log("NO envió NADA");
+        // return false to indicate failed login
+        return false;
+      }
+    });
+  }
 }

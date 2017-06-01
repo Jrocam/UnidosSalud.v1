@@ -26,7 +26,12 @@
       <md-list-item layout-align="row">
         <md-icon md-list-avatar>sentiment_very_satisfied</md-icon>
         <h3 md-line> {{user.topicos}} </h3>
-        <p md-line> Tópicos de interés. </p>
+        <p md-line> Tópicos de interés.</p>
+      </md-list-item>
+      <md-list-item layout-align="row">
+        <md-icon md-list-avatar>share</md-icon>
+        <h3 md-line> Ha interactuado </h3>
+        <p md-line> {{user.interactions}} veces </p>
       </md-list-item>
     </md-list>
     <md-divider></md-divider>
@@ -38,8 +43,8 @@
           </button>
         </div>
         <div layout="row" flex-offset-gt-xs>
-          <button md-raised-button mdTooltip="Contactar mensaje" class="margen"><md-icon color="primary">drafts</md-icon></button>
-          <button md-raised-button mdTooltip="Contactar externo" class="margen"><md-icon color="primary">send</md-icon></button>
+          <button (click)="openSnackBar( 'Interacción por correo', 'prototype 2')" md-raised-button mdTooltip="Contactar mensaje" class="margen"><md-icon color="primary">drafts</md-icon></button>
+          <button (click)="sendIt(user.id) || openSnackBar( 'Interaccion externa', user.displayName)" md-raised-button mdTooltip="Contactar externo" class="margen"><md-icon color="primary">send</md-icon></button>
         </div>
       </div>
     </md-card-actions>

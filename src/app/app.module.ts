@@ -36,7 +36,8 @@ import { InstitucionesService } from './services/instituciones.service';
 import { AuthGuard } from './guards/auth.guard';
 import { AuthenticationService } from './services/authentication.service';
 import { PerfilComponent } from './perfil/perfil.component';
-
+import { CovalentDialogsModule } from '@covalent/core';
+import {MdSnackBar} from '@angular/material';
 const httpInterceptorProviders: Type<any>[] = [
   RequestInterceptor,
 ];
@@ -67,6 +68,7 @@ const httpInterceptorProviders: Type<any>[] = [
     BrowserModule,
     BrowserAnimationsModule,
     CovalentCoreModule,
+    CovalentDialogsModule,
     CovalentHttpModule.forRoot({
       interceptors: [{
         interceptor: RequestInterceptor, paths: ['**'],
