@@ -24,13 +24,13 @@ export class AuthenticationService {
     return this.http.post('http://salud-web.herokuapp.com/rest-auth/login/', body,{headers:headers}).map((response: Response) => {
         // login successful if there's a jwt token in the response
         let token = response.json();
-        console.log(token);
         if (token) {
           // set token property
           this.token = token.key;
           // store username and jwt token in local storage to keep user logged in between page refreshes
           localStorage.setItem('currentUser', JSON.stringify({ username: username, token: token.key }));
           // return true to indicate successful login
+          console.log(localStorage.getItem('currentUser'));
           return true;
         } else {
           // return false to indicate failed login

@@ -2,19 +2,19 @@
   <md-card-title>
     Feature Form
   </md-card-title>
-  <md-divider></md-divider>
+  <md-divider md-inset></md-divider>
   <md-card-content class="push-bottom-none">
     <form #featureForm="ngForm">
       <div layout="row">
         <md-input-container flex>
           <input mdInput
                   #titleElement
-                  #titleControl="ngModel" 
-                  type="text" 
-                  placeholder="Feature Title" 
-                  [(ngModel)]="title" 
-                  name="title" 
-                  maxlength="20" 
+                  #titleControl="ngModel"
+                  type="text"
+                  placeholder="Feature Title"
+                  [(ngModel)]="title"
+                  name="title"
+                  maxlength="20"
                   required>
           <md-hint align="start">
             <span [hidden]="titleControl.pristine || !titleControl.errors?.required" class="tc-red-600">Required</span>
@@ -27,9 +27,9 @@
           <input mdInput
                   #userElement
                   #userControl="ngModel"
-                  type="text" 
-                  placeholder="User" 
-                  [(ngModel)]="user" 
+                  type="text"
+                  placeholder="User"
+                  [(ngModel)]="user"
                   name="user"
                   maxlength="30"
                   required>
@@ -44,7 +44,7 @@
       </div>
     </form>
     </md-card-content>
-    <md-divider></md-divider>
+    <md-divider md-inset></md-divider>
     <md-card-actions>
       <button md-button [disabled]="!featureForm.valid" color="primary" (click)="save()">SAVE</button>
       <button md-button (click)="goBack()">CANCEL</button>

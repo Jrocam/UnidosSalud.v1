@@ -20,6 +20,7 @@ export class ItemsService extends RESTService<any> {
     let local = localStorage.getItem('currentUser');
     let ar = local.split('"',8);
     let llave = ar[7];
+    console.log(llave);
     headers.append( 'Authorization', 'Token '+ llave);
     return this.http.get('http://salud-web.herokuapp.com/api/interests',{headers:headers})
       .map((res:Response) => res.json());

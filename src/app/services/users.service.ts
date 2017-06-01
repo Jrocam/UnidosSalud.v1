@@ -28,10 +28,6 @@ export class UsersService extends RESTService<IUser> {
       path: '/users',
     });
   }
-
-  what(){
-  console.log("asas");
-  }
   query(): any {
     let headers = new Headers();
     let local = localStorage.getItem('currentUser');

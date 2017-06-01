@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -6,8 +6,15 @@ import { Router } from '@angular/router';
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss'],
 })
-export class MainComponent {
+export class MainComponent implements OnInit {
+  userEmail:string;
 
+  ngOnInit(){
+    let local = localStorage.getItem('currentUser');
+    let ar = local.split('"',4);
+    let email = ar[3];
+    this.userEmail = email;
+  }
   routes: Object[] = [{
       title: 'Inicio',
       route: '/',

@@ -11,44 +11,134 @@
     <a md-icon-button mdTooltip="Inicio" [routerLink]="['/templates']"><md-icon>home</md-icon></a>
   </div>
   <td-layout-card-over>
-    <md-card-title> Perfil de {{user}}</md-card-title>
-    <md-card-subtitle> {{user}} </md-card-subtitle>
-    <md-divider></md-divider>
-    <md-list>
-      <md-list-item layout-align="row">
-        <md-icon md-list-avatar>email</md-icon>
-        <h3 md-line> {{user}} </h3>
-        <p md-line> Correo de contacto. </p>
-      </md-list-item>
-      <md-list-item layout-align="row">
-        <md-icon md-list-avatar>account_balance</md-icon>
-        <h3 md-line> {{user}} </h3>
-        <p md-line> Institución en la que laboro. </p>
-      </md-list-item>
-      <md-list-item layout-align="row">
-        <md-icon md-list-avatar>star</md-icon>
-        <h3 md-line> {{user}} </h3>
-        <p md-line> Area de trabajo. </p>
-      </md-list-item>
-      <md-list-item layout-align="row">
-        <md-icon md-list-avatar>sentiment_very_satisfied</md-icon>
-        <h3 md-line> {{user}} </h3>
-        <p md-line> Tópicos de interés. </p>
-      </md-list-item>
-    </md-list>
-    <md-divider></md-divider>
-    <md-card-actions layout="row">
-      <div layout="row">
-        <div flex-gt-xs>
-          <button md-button color="accent" class="text-upper" (click)="goBack()">
-            Atras
-          </button>
+    <md-tab-group>
+      <md-tab label="Mi información" *ngIf="user">
+        <md-card>
+        <md-card-title>{{user.displayName}}</md-card-title>
+        <md-card-subtitle> {{user.area}} </md-card-subtitle>
+        <md-divider></md-divider>
+        <md-list>
+          <md-list-item layout-align="row">
+            <md-icon md-list-avatar>email</md-icon>
+            <h3 md-line> {{user.email}} </h3>
+            <p md-line> Correo de contacto. </p>
+          </md-list-item>
+          <md-list-item layout-align="row">
+            <md-icon md-list-avatar>account_balance</md-icon>
+            <h3 md-line> {{user.institution}} </h3>
+            <p md-line> Institución en la que laboro. </p>
+          </md-list-item>
+          <md-list-item layout-align="row">
+            <md-icon md-list-avatar>star</md-icon>
+            <h3 md-line> {{user.area}} </h3>
+            <p md-line> Area de trabajo. </p>
+          </md-list-item>
+          <md-list-item layout-align="row">
+            <md-icon md-list-avatar>sentiment_very_satisfied</md-icon>
+            <h3 md-line> {{user.topicos}} </h3>
+            <p md-line> Tópicos de interés. </p>
+          </md-list-item>
+        </md-list>
+        <md-divider></md-divider>
+        <md-card-actions layout="row">
+          <div layout="row">
+            <div flex-gt-xs>
+              <button md-raised-button="" color="primary" class="text-upper">
+                Editar
+              </button>
+              <button md-button color="accent" class="text-upper" (click)="goBack()">
+                Atras
+              </button>
+            </div>
+            <div layout="row" flex-offset-gt-xs>
+              <button md-raised-button mdTooltip="Contactar email" class="margen"><md-icon color="primary">drafts</md-icon></button>
+              <button md-raised-button mdTooltip="Contacto externo" class="margen"><md-icon color="primary">send</md-icon></button>
+            </div>
+          </div>
+        </md-card-actions>
+        </md-card>
+      </md-tab>
+      <md-tab label="Editar Perfil">
+        <md-card>
+        <md-card-content class="push-bottom-none">
+          <form #featureForm="ngForm">
+            <h4>Información Personal</h4>
+            <md-divider></md-divider>
+            <div layout="row" class="push-top">
+              <!--<span flex="10"></span>-->
+              <md-input-container flex="30">
+                <input mdInput
+                       #newNameElement
+                       #newNameControl="ngModel"
+                       type="text"
+                       placeholder="Nombre"
+                       [(ngModel)]="newName"
+                       name="newName"
+                       maxlength="20"
+                       required>
+                <md-hint align="start">
+                  <span [hidden]="newNameControl.pristine || newNameElement.value.length != 0" class="tc-red-600">este campo es requerido.</span>
+                </md-hint>
+                <md-hint align="end">{{newNameElement.value.length}}/ 20</md-hint>
+              </md-input-container>
+              <span flex="20"></span>
+              <md-input-container flex="30">
+                <input mdInput
+                       #newLastNameElement
+                       #newLastNameControl="ngModel"
+                       type="text"
+                       placeholder="Apellidos"
+                       [(ngModel)]="newLastName"
+                       name="newLastName"
+                       maxlength="20"
+                       required>
+                <md-hint align="start">
+                  <span [hidden]=" newLastNameControl.pristine || newLastNameElement.value.length != 0" class="tc-red-600">este campo es requerido.</span>
+                </md-hint>
+                <md-hint align="end">{{newLastNameElement.value.length}}/ 20</md-hint>
+              </md-input-container>
+            </div>
+            <div layout="row" class="push-top">
+            </div>
+            <div layout="row" class="push-top">
+              <!--<span flex="10"></span>-->
+              <md-select placeholder="Institución" [(ngModel)]="selectedValue"  name="institut" flex="30">
+                <md-option *ngFor="let institut of institutions" [value]="institut.name">
+                  {{institut.name}}
+                </md-option>
+              </md-select>
+              <span flex="20"> </span>
+              <md-select placeholder="Rol" [(ngModel)]="otherSelectedValue"  name="areas" flex="30">
+                <md-option *ngFor="let are of areas" [value]="are.title">
+                  {{are.title}}
+                </md-option>
+              </md-select>
+            </div>
+            <h4>Mis preferencias</h4>
+            <md-divider></md-divider>
+            <div layout="row" class="push-top">
+              <td-chips flex="100" [items]="items"
+                        [readOnly]="readOnly"
+                        [(ngModel)]="itemsRequireMatch"
+                        placeholder="Enter autocomplete strings"
+                        requireMatch
+                        [ngModelOptions]="{standalone: true}">
+              </td-chips>
+
+            </div>
+            <button md-button (click)="showChips()"> oshe </button>
+            <p> {{itemsRequireMatch}} </p>
+          </form>
+        </md-card-content>
+        <div layout="row" class="push-top">
         </div>
-        <div layout="row" flex-offset-gt-xs>
-          <button md-raised-button mdTooltip="Contactar mensaje" class="margen"><md-icon color="primary">drafts</md-icon></button>
-          <button md-raised-button mdTooltip="Contactar externo" class="margen"><md-icon color="primary">send</md-icon></button>
-        </div>
-      </div>
-    </md-card-actions>
+        <md-divider></md-divider>
+        <md-card-actions>
+          <button md-button="" [disabled]="!featureForm.valid || !selectedValue || !otherSelectedValue" color="primary" (click)="save()">GUARDAR</button>
+          <button md-button color="accent">Cancelar</button>
+        </md-card-actions>
+        </md-card>
+      </md-tab>
+    </md-tab-group>
   </td-layout-card-over>
 </td-layout-nav>
