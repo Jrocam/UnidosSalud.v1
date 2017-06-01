@@ -36,7 +36,7 @@ export class AuthenticationService {
           // return false to indicate failed login
           return false;
         }
-      });
+    });
   }
   logout(): void {
     //Send Back-end token to destroy

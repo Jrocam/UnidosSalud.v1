@@ -1,19 +1,33 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../services/users.service';
 import { InstitucionesService } from '../services/instituciones.service';
+import { ItemsService} from '../services/items.service';
+import { TdLoadingService } from '@covalent/core';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-perfil',
   templateUrl: './perfil.component.html',
   styleUrls: ['./perfil.component.scss'],
-  viewProviders: [ UsersService, InstitucionesService ]
+  viewProviders: [ UsersService, InstitucionesService, ItemsService ]
 })
 export class PerfilComponent implements OnInit {
+
+  constructor(private _usersService: UsersService,
+              private _institucionesService: InstitucionesService,
+              private _loadingService: TdLoadingService,
+              private _router: Router,
+              private _itemsService: ItemsService
+  ) {}
+  loading= false;
   //Models Json
   private user: any;
   private institutions: any;
+  private items: any;
   //Forms
   newName: string = '';
   newLastName: string = '';
+  newPassword: string = '';
+  newPassword2: string = '';
   //Selectores
   areas: Object[] = [{
     title: 'Profesor universitario'
@@ -35,20 +49,14 @@ export class PerfilComponent implements OnInit {
   otherSelectedValue: string;
   //Chips
   readOnly: boolean = false;
-  selectedChips: string;
-  items: string[] = [
-    'a',
-    'b',
-    'e'
-  ];
-  itemsRequireMatch: string[] = this.items.slice(0, 6);
-  private putavida: any;
+  topics: string[] =[
+    '',
+   ];
+  itemsRequireMatch: string[] = this.topics.slice(0, 6);
   private putalife: any;
-  constructor(private _usersService: UsersService,
-              private _institucionesService: InstitucionesService
-  ) {}
+
   showChips(){
-    console.log(this.items);
+    console.log(this.topics);
     console.log(this.itemsRequireMatch);
   }
   getPerfil(filterTitle: string =''): void{
@@ -57,14 +65,21 @@ export class PerfilComponent implements OnInit {
     });
     this.user = this.user[0];
     console.log(this.user);
+    if(this.user){
+      console.log("entro?");
+      this.itemsRequireMatch= this.user.topicos.split(" ");
+    }
+    console.log("noentro?");
   }
   getInsti(algo: any): void{
-    this.putavida = algo;
-    console.log(this.putavida);
     this.institutions = algo;
     console.log(this.institutions);
   }
+  getTopic(topics: any):void{
+
+  }
   ngOnInit(){
+    //INSTITUTIONS
     console.log("IniInsti="+this.institutions);
     this._institucionesService.query().subscribe((institutions: Object[]) => {
       let algo = institutions;
@@ -75,6 +90,7 @@ export class PerfilComponent implements OnInit {
         this.user = users;
       });
     });
+    //USER
     console.log("IniUser="+this.user);
     this._usersService.query().subscribe((users: Object[]) => {
       this.user = users;
@@ -85,10 +101,23 @@ export class PerfilComponent implements OnInit {
       let ar = local.split('"',4);
       let usuario = ar[3];
       this.getPerfil(usuario);
-
     }, (error: Error) => {
       this._usersService.staticQuery().subscribe((users: Object[]) => {
         this.user = users;
+      });
+    });
+    //TOPICOS
+    this._itemsService.query().subscribe((ite: Object[]) => {
+      this.items= ite;
+      console.log(this.items);
+      this.topics.pop();
+      for(let top of this.items){
+        this.topics.push(top.id_top);
+      }
+      //this.getTopic(this.items);
+    }, (error: Error) => {
+      this._itemsService.staticQuery().subscribe((ite: Object[]) => {
+        this.items = ite;
       });
     });
   }
@@ -97,5 +126,27 @@ export class PerfilComponent implements OnInit {
   }
   save(): void{
     console.log("saving");
+    this.loading = true;
+    this._loadingService.register();
+    setTimeout(() => {
+      this._loadingService.resolve();
+    }, 2000);
+    let inte= this.itemsRequireMatch.toString().replace(","," ");
+    console.log("nombre:"+this.newName+"apellidos"+this.newLastName+
+                "role:"+this.otherSelectedValue+"institution:"+this.selectedValue+
+                "interests:"+inte+"password:"+this.newPassword);
+    this._usersService.profile(this.newName,this.newLastName,this.otherSelectedValue,this.selectedValue,
+      this.newPassword,this.itemsRequireMatch.toString().replace(","," "))
+      .subscribe(result => {
+        if (result === true) {
+          console.log(result);
+          console.log("buen evio de perfil!");
+          this._router.navigate(['/']);
+        } else {
+          console.log("Fallo en el envio! Contacta a un administrador.");
+          //this.loading = false;
+          alert('Fallo en el envio, contacta a un admin.');
+        }
+      });
   }
 }

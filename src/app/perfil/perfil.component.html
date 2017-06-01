@@ -43,9 +43,6 @@
         <md-card-actions layout="row">
           <div layout="row">
             <div flex-gt-xs>
-              <button md-raised-button="" color="primary" class="text-upper">
-                Editar
-              </button>
               <button md-button color="accent" class="text-upper" (click)="goBack()">
                 Atras
               </button>
@@ -58,7 +55,7 @@
         </md-card-actions>
         </md-card>
       </md-tab>
-      <md-tab label="Editar Perfil">
+      <md-tab label="Editar mi perfil">
         <md-card>
         <md-card-content class="push-bottom-none">
           <form #featureForm="ngForm">
@@ -114,27 +111,61 @@
                 </md-option>
               </md-select>
             </div>
-            <h4>Mis preferencias</h4>
+            <h4>Mis intereses</h4>
             <md-divider></md-divider>
             <div layout="row" class="push-top">
-              <td-chips flex="100" [items]="items"
+              <td-chips *ngIf="topics" flex="100" [items]="topics"
                         [readOnly]="readOnly"
                         [(ngModel)]="itemsRequireMatch"
-                        placeholder="Enter autocomplete strings"
+                        placeholder="Escoge los tópicos que te interesen"
                         requireMatch
                         [ngModelOptions]="{standalone: true}">
               </td-chips>
-
             </div>
-            <button md-button (click)="showChips()"> oshe </button>
-            <p> {{itemsRequireMatch}} </p>
+            <!--<button md-button (click)="showChips()"> showChips </button>-->
+            <h4>Nueva Contraseña</h4>
+            <md-divider></md-divider>
+            <div layout="row" class="push-top">
+              <!--<span flex="10"></span>-->
+              <md-input-container flex="30">
+                <input mdInput
+                       #newPasswordElement
+                       #newPasswordControl="ngModel"
+                       type="password"
+                       placeholder="Contraseña"
+                       [(ngModel)]="newPassword"
+                       name="newPassword"
+                       maxlength="20"
+                       required>
+                <md-hint align="start">
+                  <span [hidden]="newPasswordControl.pristine || newPasswordElement.value.length != 0" class="tc-red-600">este campo es requerido.</span>
+                </md-hint>
+                <md-hint align="end">{{newPasswordElement.value.length}}/ 20</md-hint>
+              </md-input-container>
+              <span flex="20"></span>
+              <md-input-container flex="30">
+                <input mdInput
+                       #newPassword2Element
+                       #newPassword2Control="ngModel"
+                       type="password"
+                       placeholder="Repita Contraseña"
+                       [(ngModel)]="newPassword2"
+                       name="newPassword2"
+                       maxlength="20"
+                       required>
+                <md-hint align="start">
+                  <span [hidden]=" newPassword2Control.pristine || newPassword2Element.value.length != 0" class="tc-red-600">este campo es requerido.</span>
+                </md-hint>
+                <md-hint align="end">{{newPassword2Element.value.length}}/ 20</md-hint>
+              </md-input-container>
+            </div>
           </form>
         </md-card-content>
         <div layout="row" class="push-top">
         </div>
         <md-divider></md-divider>
         <md-card-actions>
-          <button md-button="" [disabled]="!featureForm.valid || !selectedValue || !otherSelectedValue" color="primary" (click)="save()">GUARDAR</button>
+          <button md-button="" [disabled]="!featureForm.valid || !selectedValue || !otherSelectedValue || itemsRequireMatch.length==0" color="primary" (click)="save()">GUARDAR</button>
           <button md-button color="accent">Cancelar</button>
         </md-card-actions>
         </md-card>
