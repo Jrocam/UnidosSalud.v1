@@ -1,0 +1,72 @@
+<div class="md-content" class="inset">
+  <div layout-gt-sm="row">
+    <div flex-gt-sm="50">
+      <md-card>
+        <md-card-title>Tópicos</md-card-title>
+        <md-card-subtitle>para Dashboard</md-card-subtitle>
+        <td-search-box class="push-left push-right" placeholder="busqueda" [alwaysVisible]="true" (searchDebounce)="filteredTopicos($event)"></td-search-box>
+        <md-divider></md-divider>
+        <md-nav-list class="will-load item-list">
+          <div class="md-padding" *ngIf="vacio" layout="row" layout-align="center center">
+            No existe tópico con este nombre.
+          </div>
+          <ng-template tdLoading="items.load">
+            <ng-template let-item ngFor [ngForOf]="filterTopicos">
+              <a md-list-item layout-align="row" (click)="filterPersonas(item.id_top);SelectItem(item.item_id)" md-ripple class="relative">
+                <md-icon *ngIf="selectItem != item.item_id" md-list-avatar> {{item.icon}} </md-icon>
+                <md-icon *ngIf="selectItem == item.item_id" md-list-avatar class="tc-orange-800" > {{item.icon}} </md-icon>
+                <h3 md-line *ngIf="selectItem != item.item_id"> {{item.name}} </h3>
+                <h3 md-line *ngIf="selectItem == item.item_id" class="orangetitle"> {{item.name}} </h3>
+                <p md-line> {{item.description | truncate:40}} </p>
+                <span flex></span>
+                <span class="md-caption text-right" flex="20"> {{item.created | timeAgo }} </span>
+              </a>
+              <md-divider *ngIf="!last && selectItem != item.item_id" md-inset></md-divider>
+              <md-divider *ngIf="selectItem == item.item_id" md-inset class="orangediv"></md-divider>
+            </ng-template>
+          </ng-template>
+        </md-nav-list>
+      </md-card>
+    </div>
+    <div flex-gt-sm="50">
+      <md-card>
+        <md-card-title>Profesionales</md-card-title>
+        <md-card-subtitle>a los que les interesa este tópico</md-card-subtitle>
+        <td-search-box class="push-left push-right" placeholder="busqueda" [alwaysVisible]="true" (searchDebounce)="filteredUsers($event)"></td-search-box>
+        <md-divider></md-divider>
+        <md-list class="will-load user-list">
+          <div class="md-padding" *ngIf="vacioP" layout="row" layout-align="center center">
+            No existe profesional con este criterio.
+          </div>
+          <ng-template tdLoading="users.load">
+            <ng-template let-user let-last="last" ngFor [ngForOf]="filterUsers">
+              <md-list-item layout-align="row">
+                <md-icon   md-list-icon>account_box</md-icon>
+                <h3 md-line > {{user.displayName}} </h3>
+                <p md-line> {{user.institution}} </p>
+                <span flex></span>
+
+                <button md-icon-button mdTooltip="perfil" class="margen" [routerLink]="['../users',user.id]" ><md-icon color="primary">account_circle</md-icon></button>
+                <button *ngIf="user.email !== userEmail" md-icon-button mdTooltip="mensaje" class="margen"><md-icon color="primary">drafts</md-icon></button>
+                <!--<button *ngIf="user.email !== userEmail" md-icon-button mdTooltip="externo" class="margen"><md-icon color="primary">send</md-icon></button>-->
+                <!--<span class="md-caption text-right" flex="20"> {{user.topicos}} </span>-->
+              </md-list-item>
+              <md-divider *ngIf="!last" md-inset></md-divider>
+            </ng-template>
+          </ng-template>
+        </md-list>
+        <!--<md-divider></md-divider>-->
+        <!--&lt;!&ndash;<md-card-actions>&ndash;&gt;-->
+          <!--&lt;!&ndash;<a md-button color="accent" class="text-upper" [routerLink]="['/users']">&ndash;&gt;-->
+            <!--&lt;!&ndash;<span>View More</span>&ndash;&gt;-->
+          <!--&lt;!&ndash;</a>&ndash;&gt;-->
+        <!--&lt;!&ndash;</md-card-actions>&ndash;&gt;-->
+      </md-card>
+    </div>
+  </div>
+</div>
+<!--<a md-fab color="accent" class="mat-fab-bottom-right fixed" [routerLink]="['/form']">-->
+  <!--<md-icon>add</md-icon>-->
+<!--</a>-->
+
+

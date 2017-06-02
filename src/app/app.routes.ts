@@ -1,12 +1,7 @@
 import { Routes, RouterModule } from '@angular/router';
-
 import { MainComponent } from './main/main.component';
-//import { DashboardComponent } from './dashboard/dashboard.component';
-import { DashboardProductComponent } from './dashboard-product/dashboard-product.component';
-import { ProductOverviewComponent } from './dashboard-product/overview/overview.component';
-import { ProductStatsComponent } from './dashboard-product/stats/stats.component';
-import { ProductFeaturesComponent } from './dashboard-product/features/features.component';
-import { FeaturesFormComponent } from './dashboard-product/features/form/form.component';
+import { DashboardProductComponent } from './interacciones/dashboard-product.component';
+import { ProductOverviewComponent } from './interacciones/overview/overview.component';
 import { UsersComponent } from './users/users.component';
 import { UsersFormComponent } from './users/form/form.component';
 import { LogsComponent } from './logs/logs.component';
@@ -19,6 +14,12 @@ import { EmailTemplateComponent } from './templates/email/email.component';
 import { EditorTemplateComponent } from './templates/editor/editor.component';
 import { AuthGuard } from './guards/auth.guard';
 import { PerfilComponent } from './perfil/perfil.component';
+import { DocentesComponent } from './interacciones/docentes/docentes.component';
+import { CientificosComponent } from './interacciones/cientificos/cientificos.component';
+import { TecnicosComponent } from './interacciones/tecnicos/tecnicos.component';
+import { AdministradoresComponent } from './interacciones/administradores/administradores.component';
+import { NogubernamentalesComponent } from './interacciones/nogubernamentales/nogubernamentales.component';
+
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: '', component: MainComponent,canActivate: [AuthGuard], children: [{
@@ -28,13 +29,11 @@ const routes: Routes = [
     {path: 'perfil', component: PerfilComponent},
     {path: 'interacciones', component: DashboardProductComponent, children: [
       {path: '', component: ProductOverviewComponent},
-      {path: 'stats', component: ProductStatsComponent},
-      {path: 'features', children: [
-        {path: '', component: ProductFeaturesComponent},
-        {path: 'add', component: FeaturesFormComponent},
-        {path: ':id/delete', component: FeaturesFormComponent},
-        {path: ':id/edit', component: FeaturesFormComponent},
-      ]},
+      {path: 'docentes', component: DocentesComponent},
+      {path: 'cientificos', component: CientificosComponent},
+      {path: 'tecnicos', component: TecnicosComponent},
+      {path: 'administradores', component: AdministradoresComponent},
+      {path: 'nogubernamentales', component: NogubernamentalesComponent},
     ]},
     {path: 'users/:id', component: DetailComponent},
     {path: 'logs', component: LogsComponent},

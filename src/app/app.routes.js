@@ -2,11 +2,11 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var router_1 = require("@angular/router");
 var main_component_1 = require("./main/main.component");
-var dashboard_product_component_1 = require("./dashboard-product/dashboard-product.component");
-var overview_component_1 = require("./dashboard-product/overview/overview.component");
-var stats_component_1 = require("./dashboard-product/stats/stats.component");
-var features_component_1 = require("./dashboard-product/features/features.component");
-var form_component_1 = require("./dashboard-product/features/form/form.component");
+var dashboard_product_component_1 = require("./interacciones/dashboard-product.component");
+var overview_component_1 = require("./interacciones/overview/overview.component");
+var stats_component_1 = require("./interacciones/stats/stats.component");
+var features_component_1 = require("./interacciones/features/features.component");
+var form_component_1 = require("./interacciones/features/form/form.component");
 var users_component_1 = require("./users/users.component");
 var form_component_2 = require("./users/form/form.component");
 var logs_component_1 = require("./logs/logs.component");
