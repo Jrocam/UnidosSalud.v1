@@ -1,8 +1,14 @@
 # Unidos en Salud Red
 
+<<<<<<< HEAD
 Generación vida nueva red-interpersonal - unidos en salud App with @angular4 @material-design @teradata
 
 ## Setup (instalación)
+=======
+GeneraciÃ³n vida nueva red-interpersonal - unidos en salud App with @angular4 @material-design @teradata 
+
+## Setup (instalaciÃ³n)
+>>>>>>> origin/master
 
 * Ensure you have Node 4.4+ and NPM 3+ installed.
 * Install Angular CLI `npm i -g angular-cli@latest`
