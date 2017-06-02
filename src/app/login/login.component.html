@@ -18,7 +18,7 @@
             <form #loginForm="ngForm">
               <div layout="row">
                 <md-input-container flex>
-                  <input mdInput #userElement #userControl="ngModel" placeholder="Usuario" type="email" maxlength="30" name="username" [(ngModel)]="username" required placeholder="Enter a valid email address">
+                  <input mdInput #userElement #userControl="ngModel" placeholder="Usuario" type="email" maxlength="30" name="username" [(ngModel)]="username" required placeholder="Ingresa una dirección de correo adecuada">
                   <span md-prefix><md-icon>persona</md-icon></span>
                   <md-hint align="start">
                     <span [hidden]="!userControl.errors?.required || userControl.pristine" class="tc-red-600">Required</span>

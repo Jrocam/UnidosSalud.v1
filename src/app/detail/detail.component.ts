@@ -15,6 +15,7 @@ export class DetailComponent implements OnInit {
 
   user: any;
   vacio: boolean = true;
+  userEmail: string;
   constructor(private _router: Router, private _usersService: UsersService,
               private _route: ActivatedRoute, private _loadingService: TdLoadingService,
               public _snack: MdSnackBar) {}
@@ -30,6 +31,10 @@ export class DetailComponent implements OnInit {
     this.vacio = this.user.length === 0;
   }
   ngOnInit(): void {
+    let local = localStorage.getItem('currentUser');
+    let ar = local.split('"',4);
+    let usuario = ar[3];
+    this.userEmail = usuario;
     console.log("IniUser="+this.user);
     this._route.params.subscribe((params: {id: string}) => {
       this._usersService.query().subscribe((users: Object[]) => {

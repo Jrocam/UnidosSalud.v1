@@ -2,7 +2,7 @@
   <div td-toolbar-content layout="row" layout-align="center center" flex>
     <span>Mi Perfil</span>
     <span flex></span>
-    <a md-icon-button mdTooltip="Interactúa" [routerLink]="['/interacciones']" ><md-icon>supervisor_account</md-icon></a>
+    <a md-icon-button mdTooltip="Interactúa" [routerLink]="['/interacciones']" ><md-icon>share</md-icon></a>
     <a md-icon-button mdTooltip="Correos" [routerLink]="['/home/email']">
       <td-notification-count color="accent" [notifications]="4">
         <md-icon>email</md-icon>
@@ -122,7 +122,7 @@
               <td-chips *ngIf="topics" flex="100" [items]="topics"
                         [readOnly]="readOnly"
                         [(ngModel)]="itemsRequireMatch"
-                        placeholder="Escoge los tópicos que te interesen"
+                        placeholder="añadir tópico"
                         requireMatch
                         [ngModelOptions]="{standalone: true}">
               </td-chips>

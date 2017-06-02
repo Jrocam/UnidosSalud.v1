@@ -43,8 +43,9 @@
           </button>
         </div>
         <div layout="row" flex-offset-gt-xs>
-          <button (click)="openSnackBar( 'Interacción por correo', 'prototype 2')" md-raised-button mdTooltip="Contactar mensaje" class="margen"><md-icon color="primary">drafts</md-icon></button>
-          <button (click)="sendIt(user.id) || openSnackBar( 'Interaccion externa', user.displayName)" md-raised-button mdTooltip="Contactar externo" class="margen"><md-icon color="primary">send</md-icon></button>
+          <button *ngIf=" user.email != userEmail" (click)="openSnackBar( 'Interacción por correo', 'prototype 2')" md-raised-button mdTooltip="Contactar mensaje" class="margen"><md-icon color="primary">drafts</md-icon></button>
+          <button *ngIf=" user.email != userEmail" (click)="sendIt(user.id) || openSnackBar( 'Interaccion externa', user.displayName)" md-raised-button mdTooltip="Contactar externo" class="margen"><md-icon color="primary">send</md-icon></button>
+          <button *ngIf=" user.email == userEmail" [routerLink]="['/perfil']" color="primary" md-raised-button mdTooltip="Editar"> Editar </button>
         </div>
       </div>
     </md-card-actions>

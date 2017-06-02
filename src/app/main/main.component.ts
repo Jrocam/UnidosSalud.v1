@@ -49,9 +49,9 @@ export class MainComponent implements OnInit {
       message: 'Nos dimos cuenta de que todavía no has llenado tu perfil. Deseas hacerlo ahora?',
       disableClose: true, // defaults to false
       viewContainerRef: this._viewContainerRef, //OPTIONAL
-      title: 'Hola te damos la bienvenida!', //OPTIONAL, hides if not provided
-      cancelButton: 'no ahora', //OPTIONAL, defaults to 'CANCEL'
-      acceptButton: 'Claro', //OPTIONAL, defaults to 'ACCEPT'
+      title: 'Hola! Te damos la bienvenida', //OPTIONAL, hides if not provided
+      acceptButton: 'Claro!', //OPTIONAL, defaults to 'ACCEPT'
+      cancelButton: 'ahora no', //OPTIONAL, defaults to 'CANCEL'
     }).afterClosed().subscribe((accept: boolean) => {
       if (accept) {
         this._router.navigate(['/perfil']);
@@ -71,16 +71,16 @@ export class MainComponent implements OnInit {
     }, {
       title: 'Interactuar',
       route: '/interacciones',
-      icon: 'view_quilt',
+      icon: 'share',
     }, {
-      title: 'Emails',
-      route: '/home/email',
-      icon: 'email',
-    },{
-      title: 'Administrador',
-      route: '/users',
-      icon: 'people',
-    }
+    title: 'Emails',
+    route: '/home/email',
+    icon: 'email',
+    }// ,{
+    //   title: 'Administrador',
+    //   route: '/users',
+    //   icon: 'supervisor_account',
+    // }
   ];
   logout(): void {
     this._router.navigate(['/login']);
