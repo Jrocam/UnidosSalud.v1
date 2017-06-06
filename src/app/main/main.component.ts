@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ViewContainerRef } from '@angular/core';
 import { TdDialogService } from '@covalent/core';
 import { UsersService } from '../services/users.service';
+import { AuthenticationService } from '../services/authentication.service';
 @Component({
   selector: 'qs-main',
   templateUrl: './main.component.html',
@@ -14,7 +15,9 @@ export class MainComponent implements OnInit {
   constructor(private _router: Router,
               private _dialogService: TdDialogService,
               private _usersService: UsersService,
-              private _viewContainerRef: ViewContainerRef) {}
+              private _viewContainerRef: ViewContainerRef, private _auth: AuthenticationService) {
+    setInterval(() => { this._auth.ping(); }, 1000 * 60 * 20);
+  }
   userEmail:string;
   logged: any;
   ngOnInit(){

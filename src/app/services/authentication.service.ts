@@ -47,4 +47,8 @@ export class AuthenticationService {
     localStorage.removeItem('currentUser');
 
   }
+  ping(): void{
+    this.http.get('http://salud-web.herokuapp.com');
+    console.log("Refreshing server...");
+  }
 }

@@ -121,5 +121,4 @@ export class CientificosComponent implements AfterViewInit {
       });
     });
   }
-
 }
